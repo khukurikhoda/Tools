@@ -1,0 +1,796 @@
+// Tools Nepal Product Data
+// Extracted from Shree Krishna Traders website
+
+const products = [
+  {
+    id: 1,
+    name: "5 inch Khukuri",
+    price: 1099,
+    category: null,
+    description: "",
+    image: "images/55.webp"
+  },
+  {
+    id: 2,
+    name: "NORMAL DAU",
+    price: 1499,
+    category: null,
+    description: "",
+    image: "images/2p.webp"
+  },
+  {
+    id: 3,
+    name: "Hasiya",
+    price: 1500,
+    category: null,
+    description: "",
+    image: "images/90.webp"
+  },
+  {
+    id: 4,
+    name: "chulesi",
+    price: 1700,
+    category: null,
+    description: "",
+    image: "images/78.webp"
+  },
+  {
+    id: 5,
+    name: "5INCH WHITE BONE HANDLE KHUKURI",
+    price: 1799,
+    category: null,
+    description: "",
+    image: "images/39.webp"
+  },
+  {
+    id: 6,
+    name: "DAU HIGH FINISHING",
+    price: 1999,
+    category: null,
+    description: "",
+    image: "images/u.webp"
+  },
+  {
+    id: 7,
+    name: "10 inch khukuri",
+    price: 1999,
+    category: null,
+    description: "",
+    image: "images/62.webp"
+  },
+  {
+    id: 8,
+    name: "Khukuri 5 inch",
+    price: 2000,
+    category: null,
+    description: "",
+    image: "images/101.webp"
+  },
+  {
+    id: 9,
+    name: "Bhojpuri khukuri 6 inch",
+    price: 2199,
+    category: null,
+    description: "",
+    image: "images/71.webp"
+  },
+  {
+    id: 10,
+    name: "5 inch wood handal pana walla",
+    price: 2200,
+    category: null,
+    description: "",
+    image: "images/91.webp"
+  },
+  {
+    id: 11,
+    name: "NORMAL DAU WITH COVER (LEATHER)",
+    price: 2499,
+    category: null,
+    description: "",
+    image: "images/s.webp"
+  },
+  {
+    id: 12,
+    name: "5 inch blade bone Handle",
+    price: 2499,
+    category: null,
+    description: "",
+    image: "images/95.webp"
+  },
+  {
+    id: 13,
+    name: "Bhojpuri khukuri 8 inch",
+    price: 2799,
+    category: null,
+    description: "",
+    image: "images/66.webp"
+  },
+  {
+    id: 14,
+    name: "Bhojpuri khukuri 8 inch",
+    price: 2799,
+    category: null,
+    description: "",
+    image: "images/63.webp"
+  },
+  {
+    id: 15,
+    name: "1.2KG DAU",
+    price: 2999,
+    category: null,
+    description: "",
+    image: "images/42.webp"
+  },
+  {
+    id: 16,
+    name: "RAMBO KNIFE 5inch",
+    price: 2999,
+    category: null,
+    description: "",
+    image: "images/q.webp"
+  },
+  {
+    id: 17,
+    name: "KHUKURI 7 INCH WITH STAND",
+    price: 2999,
+    category: null,
+    description: "",
+    image: "images/7inc.webp"
+  },
+  {
+    id: 18,
+    name: "JAPANEESE DAU",
+    price: 3000,
+    category: null,
+    description: "",
+    image: "images/hdau.webp"
+  },
+  {
+    id: 19,
+    name: "9 inch pana",
+    price: 3300,
+    category: null,
+    description: "",
+    image: "images/98.webp"
+  },
+  {
+    id: 20,
+    name: "750GRAM DAU WITH COVER",
+    price: 3499,
+    category: null,
+    description: "",
+    image: "images/40.webp"
+  },
+  {
+    id: 21,
+    name: "900GRAM DAU WITH COVER",
+    price: 3499,
+    category: null,
+    description: "",
+    image: "images/41.webp"
+  },
+  {
+    id: 22,
+    name: "Curve Dau High Quality",
+    price: 3999,
+    category: null,
+    description: "",
+    image: "images/59.webp"
+  },
+  {
+    id: 23,
+    name: "BLACK RAMBO TYPE DAU LEATHER COVER",
+    price: 3499,
+    category: null,
+    description: "",
+    image: "images/32.webp"
+  },
+  {
+    id: 24,
+    name: "KHUKURI 10 inch WOOD HANDLE BLACK COVER",
+    price: 3500,
+    category: null,
+    description: "",
+    image: "images/woodh.webp"
+  },
+  {
+    id: 25,
+    name: "RAMBO KNIFE BONE HANDLE",
+    price: 3999,
+    category: null,
+    description: "",
+    image: "images/43.webp"
+  },
+  {
+    id: 26,
+    name: "RAMBO KNIFE 10 inch",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/46.webp"
+  },
+  {
+    id: 27,
+    name: "KNIFE LEATHER COVER",
+    price: 4000,
+    category: null,
+    description: "",
+    image: "images/wow.webp"
+  },
+  {
+    id: 28,
+    name: "RAINBOW KNIFE 8INCH",
+    price: 4000,
+    category: null,
+    description: "",
+    image: "images/38.webp"
+  },
+  {
+    id: 29,
+    name: "Dau",
+    price: 4000,
+    category: null,
+    description: "",
+    image: "images/88.webp"
+  },
+  {
+    id: 30,
+    name: "Khukuri 10 inch",
+    price: 4000,
+    category: null,
+    description: "",
+    image: "images/89.webp"
+  },
+  {
+    id: 31,
+    name: "900 gram Dau with high quality leather cover",
+    price: 4499,
+    category: null,
+    description: "",
+    image: "images/41.webp"
+  },
+  {
+    id: 32,
+    name: "genuine leather knife cover",
+    price: 4599,
+    category: null,
+    description: "",
+    image: "images/40.webp"
+  },
+  {
+    id: 33,
+    name: "khukuri 11with stand",
+    price: 4699,
+    category: null,
+    description: "",
+    image: "images/93.webp"
+  },
+  {
+    id: 34,
+    name: "10 inch self defense khukuri with stand",
+    price: 4799,
+    category: null,
+    description: "",
+    image: "images/47.webp"
+  },
+  {
+    id: 35,
+    name: "9 inch thai khukuri",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/49.webp"
+  },
+  {
+    id: 36,
+    name: "Khuraki",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/60.webp"
+  },
+  {
+    id: 37,
+    name: "Agarbatti hold",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/35.webp"
+  },
+  {
+    id: 38,
+    name: "TIGER KNIFE",
+    price: 5499,
+    category: null,
+    description: "",
+    image: "images/tigerknife.webp"
+  },
+  {
+    id: 39,
+    name: "KHUKURI BONE HANDLE PANA 10 INCH",
+    price: 5499,
+    category: null,
+    description: "",
+    image: "images/paro.webp"
+  },
+  {
+    id: 40,
+    name: "10inch SAFTEY KNIFE LEATHER COLOUR",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/48.webp"
+  },
+  {
+    id: 41,
+    name: "5inch BLADE,BONE HANDLE AND HIDING KHUKURI",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/58.webp"
+  },
+  {
+    id: 42,
+    name: "11INCH KHUKURI TYPE KNIFE",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/44.webp"
+  },
+  {
+    id: 43,
+    name: "THAILAND TYPE FISH CUTTING DAU 1.3KG",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/37.webp"
+  },
+  {
+    id: 44,
+    name: "S KNIFE",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/33.webp"
+  },
+  {
+    id: 45,
+    name: "KHUKURI 11inch WOOD HANDLE",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/34.webp"
+  },
+  {
+    id: 46,
+    name: "KHUKURI 10 INCH MIX COLOUR WITH STAND",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/random.webp"
+  },
+  {
+    id: 47,
+    name: "RANBOW KNIFE WOOD COVER",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/wood.webp"
+  },
+  {
+    id: 48,
+    name: "RANBOW KNIFE bone handle",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/57.webp"
+  },
+  {
+    id: 49,
+    name: "BONE HANDLE KHUKURI",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/AGAD5926.webp"
+  },
+  {
+    id: 50,
+    name: "Dragon Eagle 10 inch",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/64.webp"
+  },
+  {
+    id: 51,
+    name: "Kitchen Knife",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/churi.webp"
+  },
+  {
+    id: 52,
+    name: "10 inch fish type knife khukuri",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/92.webp"
+  },
+  {
+    id: 53,
+    name: "8 inch Rambo knife orginal leather cover",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/94.webp"
+  },
+  {
+    id: 54,
+    name: "Rambo Knife",
+    price: 5000,
+    category: null,
+    description: "",
+    image: "images/100.webp"
+  },
+  {
+    id: 55,
+    name: "FISH KNIFE 1.3KG WITH COVER",
+    price: 5499,
+    category: null,
+    description: "",
+    image: "images/50.webp"
+  },
+  {
+    id: 56,
+    name: "13 inch chitlang and sirupate khukuri",
+    price: 5500,
+    category: null,
+    description: "",
+    image: "images/51.webp"
+  },
+  {
+    id: 57,
+    name: "10inch SAFTEY KNIFE LEATHER COLOUR",
+    price: 5500,
+    category: null,
+    description: "",
+    image: "images/48.webp"
+  },
+  {
+    id: 58,
+    name: "GREEN LEAFS KHUKURI 10inch",
+    price: 5999,
+    category: null,
+    description: "",
+    image: "images/31.webp"
+  },
+  {
+    id: 59,
+    name: "GreenLeaf 10 inch black cover",
+    price: 5999,
+    category: null,
+    description: "",
+    image: "images/70.webp"
+  },
+  {
+    id: 60,
+    name: "13 inch blade 5 inch Handle full brash ane cover geniune leather",
+    price: 6499,
+    category: null,
+    description: "",
+    image: "images/72.webp"
+  },
+  {
+    id: 61,
+    name: "SIRUPATE KHUKURI ALUMINIUM HANDLE 13 INCH",
+    price: 6499,
+    category: null,
+    description: "",
+    image: "images/silver.webp"
+  },
+  {
+    id: 62,
+    name: "GreenLeaf 12 inch",
+    price: 6499,
+    category: null,
+    description: "",
+    image: "images/65.webp"
+  },
+  {
+    id: 63,
+    name: "DHAL FULL BRASS (1KG 12INCH)",
+    price: 6499,
+    category: null,
+    description: "",
+    image: "images/30.webp"
+  },
+  {
+    id: 64,
+    name: "Khoda Type Dau",
+    price: 6499,
+    category: null,
+    description: "",
+    image: "images/sdau.webp"
+  },
+  {
+    id: 65,
+    name: "Clean Dau Fish Cutting",
+    price: 6499,
+    category: null,
+    description: "",
+    image: "images/56.webp"
+  },
+  {
+    id: 66,
+    name: "Dragon eagel10 inch ganga wall",
+    price: 6500,
+    category: null,
+    description: "",
+    image: "images/68.webp"
+  },
+  {
+    id: 67,
+    name: "DHANKUTE KHUKURI WITH STAND",
+    price: 6999,
+    category: null,
+    description: "",
+    image: "images/dhunkute.webp"
+  },
+  {
+    id: 68,
+    name: "KHUKURI HIGH QUALITY LEATHER",
+    price: 7999,
+    category: null,
+    description: "",
+    image: "images/khuk.webp"
+  },
+  {
+    id: 69,
+    name: "LEATHER BAG",
+    price: 8999,
+    category: null,
+    description: "",
+    image: "images/leather.webp"
+  },
+  {
+    id: 70,
+    name: "20 inch khukuri mar hanne",
+    price: 8999,
+    category: null,
+    description: "",
+    image: "images/52.webp"
+  },
+  {
+    id: 71,
+    name: "21 inch pana Khukuri",
+    price: 9999,
+    category: null,
+    description: "",
+    image: "images/53.webp"
+  },
+  {
+    id: 72,
+    name: "13 inch chitlang and sirupate khukuri",
+    price: 10000,
+    category: null,
+    description: "",
+    image: "images/51.webp"
+  },
+  {
+    id: 73,
+    name: "Samurai(Katana) 18 inch",
+    price: 11000,
+    category: null,
+    description: "",
+    image: "images/85.webp"
+  },
+  {
+    id: 74,
+    name: "sumurai",
+    price: 12000,
+    category: null,
+    description: "",
+    image: "images/77.webp"
+  },
+  {
+    id: 75,
+    name: "DRAGON KHODA ONLY WOOD HANDLE",
+    price: 12999,
+    category: null,
+    description: "",
+    image: "images/open.webp"
+  },
+  {
+    id: 76,
+    name: "CUT DESIGN WOOD HANDLE KHODA",
+    price: 12999,
+    category: null,
+    description: "",
+    image: "images/75.webp"
+  },
+  {
+    id: 77,
+    name: "KHODA",
+    price: 12999,
+    category: null,
+    description: "",
+    image: "images/61.webp"
+  },
+  {
+    id: 78,
+    name: "KHODA",
+    price: 12999,
+    category: null,
+    description: "",
+    image: "images/76.webp"
+  },
+  {
+    id: 79,
+    name: "Khoda with lether cover 22 inch",
+    price: 13000,
+    category: null,
+    description: "",
+    image: "images/87.webp"
+  },
+  {
+    id: 80,
+    name: "KHODA LEATHER COVER 22 inch blade",
+    price: 13499,
+    category: null,
+    description: "",
+    image: "images/y.webp"
+  },
+  {
+    id: 81,
+    name: "KHODA 22INCH BLADE 10 INCH HANDLE",
+    price: 13999,
+    category: null,
+    description: "",
+    image: "images/khoda.webp"
+  },
+  {
+    id: 82,
+    name: "Trishul (trident)",
+    price: 14999,
+    category: null,
+    description: "",
+    image: "images/96.webp"
+  },
+  {
+    id: 83,
+    name: "TIGER HANDLE TARBAL 31 inch",
+    price: 15499,
+    category: null,
+    description: "",
+    image: "images/r.webp"
+  },
+  {
+    id: 84,
+    name: "TARBAL 31 inch",
+    price: 15999,
+    category: null,
+    description: "",
+    image: "images/t.webp"
+  },
+  {
+    id: 85,
+    name: "Khoda 24 inch blade 13 inch handle 2.8kg weight with cover",
+    price: 16499,
+    category: null,
+    description: "",
+    image: "images/74.webp"
+  },
+  {
+    id: 86,
+    name: "Talbar 31 inch",
+    price: 18000,
+    category: null,
+    description: "",
+    image: "images/99.webp"
+  },
+  {
+    id: 87,
+    name: "Tarbal",
+    price: 19000,
+    category: null,
+    description: "",
+    image: "images/84.webp"
+  },
+  {
+    id: 88,
+    name: "24 inch blade glas Handel",
+    price: 23000,
+    category: null,
+    description: "",
+    image: "images/81.webp"
+  },
+  {
+    id: 89,
+    name: "Khoda (penguin handle)",
+    price: 23000,
+    category: null,
+    description: "",
+    image: "images/88.webp"
+  },
+  {
+    id: 90,
+    name: "Full Wall Set talbar",
+    price: 44500,
+    category: null,
+    description: "",
+    image: "images/83.webp"
+  },
+  {
+    id: 91,
+    name: "Full Wall Set talbar 32 inch length",
+    price: 46000,
+    category: null,
+    description: "",
+    image: "images/82.webp"
+  }
+];
+
+// Categories for filtering
+const categories = [
+  "All Products",
+  "Khukuri",
+  "Khoda",
+  "Kitchen Knives",
+  "Butcher Knives",
+  "Stands",
+  "Agricultural Tools",
+  "Handicraft Tools",
+  "Other Products"
+];
+
+function inferCategory(name) {
+  const normalizedName = `${name || ''}`.toLowerCase();
+
+  if (normalizedName.includes('khoda') || normalizedName.includes('khoda')) {
+    return 'Khoda';
+  }
+  if (normalizedName.includes('khukuri') || normalizedName.includes('knife') || normalizedName.includes('dau') || normalizedName.includes('rambo') || normalizedName.includes('s knife') || normalizedName.includes('tiger') || normalizedName.includes('tarbal') || normalizedName.includes('talbar') || normalizedName.includes('trishul')) {
+    return normalizedName.includes('knife') || normalizedName.includes('dau') || normalizedName.includes('rambo') || normalizedName.includes('s knife') || normalizedName.includes('tiger') || normalizedName.includes('tarbal') || normalizedName.includes('talbar') || normalizedName.includes('trishul')
+      ? 'Other Products'
+      : 'Khukuri';
+  }
+  if (normalizedName.includes('kitchen')) {
+    return 'Kitchen Knives';
+  }
+  if (normalizedName.includes('butcher')) {
+    return 'Butcher Knives';
+  }
+  if (normalizedName.includes('stand') || normalizedName.includes('cover')) {
+    return 'Stands';
+  }
+  if (normalizedName.includes('bag') || normalizedName.includes('holder') || normalizedName.includes('wallet')) {
+    return 'Handicraft Tools';
+  }
+  return 'Other Products';
+}
+
+function inferDescription(productName, price) {
+  const name = `${productName || ''}`.toLowerCase();
+  if (name.includes('khoda')) {
+    return 'A striking traditional blade with bold presence and heritage craftsmanship.';
+  }
+  if (name.includes('khukuri') || name.includes('knife') || name.includes('dau')) {
+    return 'Premium handcrafted quality designed for strength, balance, and daily use.';
+  }
+  if (price >= 15000) {
+    return 'A statement piece made for collectors and serious traditional tool lovers.';
+  }
+  return 'A beautifully finished piece combining tradition, detail, and everyday utility.';
+}
+
+products.forEach((product) => {
+  const inferredCategory = inferCategory(product.name);
+  product.category = product.category || inferredCategory;
+  product.description = product.description || inferDescription(product.name, product.price);
+  product.image = product.image || 'images/basket.webp';
+});
+
+window.products = products;
+window.categories = categories;
