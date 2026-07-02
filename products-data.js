@@ -10,14 +10,7 @@ const products = [
     description: "",
     image: "images/55.webp"
   },
-  {
-    id: 2,
-    name: "NORMAL DAU",
-    price: 1499,
-    category: null,
-    description: "",
-    image: "images/2p.webp"
-  },
+
   {
     id: 3,
     name: "Hasiya",
@@ -45,7 +38,7 @@ const products = [
   {
     id: 6,
     name: "DAU HIGH FINISHING",
-    price: 1999,
+    price: 2199,
     category: null,
     description: "",
     image: "images/u.webp"
@@ -66,8 +59,17 @@ const products = [
     description: "",
     image: "images/101.webp"
   },
+
   {
     id: 9,
+    name: "knide",
+    price: 2000,
+    category: null,
+    description: "",
+    image: "images/130.webp"
+  },
+  {
+    id: 10,
     name: "Bhojpuri khukuri 6 inch",
     price: 2199,
     category: null,
@@ -82,14 +84,7 @@ const products = [
     description: "",
     image: "images/91.webp"
   },
-  {
-    id: 11,
-    name: "NORMAL DAU WITH COVER (LEATHER)",
-    price: 2499,
-    category: null,
-    description: "",
-    image: "images/s.webp"
-  },
+ 
   {
     id: 12,
     name: "5 inch blade bone Handle",
@@ -137,6 +132,24 @@ const products = [
     category: null,
     description: "",
     image: "images/7inc.webp"
+  },
+
+    {
+    id: 17,
+    name: "10 inch sirupate khukuri",
+    price: 2999,
+    category: null,
+    description: "",
+    image: "images/117.webp"
+  },
+
+     {
+    id: 17,
+    name: "10 inch sirupate khukuri",
+    price: 2999,
+    category: null,
+    description: "",
+    image: "images/118.webp"
   },
   {
     id: 18,
@@ -220,20 +233,13 @@ const products = [
   },
   {
     id: 28,
-    name: "RAINBOW KNIFE 8INCH",
+    name: "RAINBOW KNIFE 8 INCH",
     price: 4000,
     category: null,
     description: "",
     image: "images/38.webp"
   },
-  {
-    id: 29,
-    name: "Dau",
-    price: 4000,
-    category: null,
-    description: "",
-    image: "images/88.webp"
-  },
+
   {
     id: 30,
     name: "Khukuri 10 inch",
@@ -242,22 +248,8 @@ const products = [
     description: "",
     image: "images/89.webp"
   },
-  {
-    id: 31,
-    name: "900 gram Dau with high quality leather cover",
-    price: 4499,
-    category: null,
-    description: "",
-    image: "images/41.webp"
-  },
-  {
-    id: 32,
-    name: "genuine leather knife cover",
-    price: 4599,
-    category: null,
-    description: "",
-    image: "images/40.webp"
-  },
+ 
+
   {
     id: 33,
     name: "khukuri 11with stand",
@@ -268,8 +260,8 @@ const products = [
   },
   {
     id: 34,
-    name: "10 inch self defense khukuri with stand",
-    price: 4799,
+    name: "10 inch self defense knife",
+    price: 5499,
     category: null,
     description: "",
     image: "images/47.webp"
@@ -290,14 +282,7 @@ const products = [
     description: "",
     image: "images/60.webp"
   },
-  {
-    id: 37,
-    name: "Agarbatti hold",
-    price: 4999,
-    category: null,
-    description: "",
-    image: "images/35.webp"
-  },
+ 
   {
     id: 38,
     name: "TIGER KNIFE",
@@ -317,7 +302,7 @@ const products = [
   {
     id: 40,
     name: "10inch SAFTEY KNIFE LEATHER COLOUR",
-    price: 4999,
+    price: 5499,
     category: null,
     description: "",
     image: "images/48.webp"
@@ -370,14 +355,7 @@ const products = [
     description: "",
     image: "images/random.webp"
   },
-  {
-    id: 47,
-    name: "RANBOW KNIFE WOOD COVER",
-    price: 4999,
-    category: null,
-    description: "",
-    image: "images/wood.webp"
-  },
+  
   {
     id: 48,
     name: "RANBOW KNIFE bone handle",
@@ -418,6 +396,15 @@ const products = [
     description: "",
     image: "images/92.webp"
   },
+
+  {
+    id: 52,
+    name: "Horn Knife",
+    price: 4999,
+    category: null,
+    description: "",
+    image: "images/127.webp"
+  },
   {
     id: 53,
     name: "8 inch Rambo knife orginal leather cover",
@@ -429,7 +416,7 @@ const products = [
   {
     id: 54,
     name: "Rambo Knife",
-    price: 5000,
+    price: 5499,
     category: null,
     description: "",
     image: "images/100.webp"
@@ -445,19 +432,12 @@ const products = [
   {
     id: 56,
     name: "13 inch chitlang and sirupate khukuri",
-    price: 5500,
+    price: 5499,
     category: null,
     description: "",
     image: "images/51.webp"
   },
-  {
-    id: 57,
-    name: "10inch SAFTEY KNIFE LEATHER COLOUR",
-    price: 5500,
-    category: null,
-    description: "",
-    image: "images/48.webp"
-  },
+
   {
     id: 58,
     name: "GREEN LEAFS KHUKURI 10inch",
@@ -465,6 +445,15 @@ const products = [
     category: null,
     description: "",
     image: "images/31.webp"
+  },
+
+    {
+    id: 58,
+    name: "GREEN LEAFS KHUKURI 10inch Black Cover",
+    price: 5999,
+    category: null,
+    description: "",
+    image: "images/129.webp"
   },
   {
     id: 59,
@@ -546,6 +535,32 @@ const products = [
     description: "",
     image: "images/khuk.webp"
   },
+    {
+    id: 68,
+    name: "Khukuri 12 inch",
+    price: 7999,
+    category: null,
+    description: "",
+    image: "images/117.webp"
+  },
+
+     {
+    id: 68,
+    name: "Khukuri 12 inch",
+    price: 7999,
+    category: null,
+    description: "",
+    image: "images/115.webp"
+  },
+
+     {
+    id: 68,
+    name: "Khukuri 12 inch",
+    price: 7999,
+    category: null,
+    description: "",
+    image: "images/116.webp"
+  },
   {
     id: 69,
     name: "LEATHER BAG",
@@ -561,6 +576,24 @@ const products = [
     category: null,
     description: "",
     image: "images/52.webp"
+  },
+
+    {
+    id: 70,
+    name: "Knife Whole Set",
+    price: 8999,
+    category: null,
+    description: "",
+    image: "images/126.webp"
+  },
+
+      {
+    id: 70,
+    name: "Hanging Knife Rool Bag Genuine Leather",
+    price: 8999/pic,
+    category: null,
+    description: "",
+    image: "images/132.webp"
   },
   {
     id: 71,
@@ -585,6 +618,15 @@ const products = [
     category: null,
     description: "",
     image: "images/85.webp"
+  },
+
+    {
+    id: 73,
+    name: "Samurai(Katana) 18 inch",
+    price: 11000,
+    category: null,
+    description: "",
+    image: "images/123.webp"
   },
   {
     id: 74,
@@ -634,14 +676,8 @@ const products = [
     description: "",
     image: "images/87.webp"
   },
-  {
-    id: 80,
-    name: "KHODA LEATHER COVER 22 inch blade",
-    price: 13499,
-    category: null,
-    description: "",
-    image: "images/y.webp"
-  },
+ 
+  
   {
     id: 81,
     name: "KHODA 22INCH BLADE 10 INCH HANDLE",
@@ -713,6 +749,14 @@ const products = [
     category: null,
     description: "",
     image: "images/88.webp"
+  },
+   {
+    id: 89,
+    name: "Khoda (penguin handle)",
+    price: 31000,
+    category: null,
+    description: "",
+    image: "images/131.webp"
   },
   {
     id: 90,
