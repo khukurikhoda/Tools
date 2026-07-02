@@ -590,7 +590,7 @@ const products = [
       {
     id: 70,
     name: "Hanging Knife Rool Bag Genuine Leather",
-    price: 8999/pic,
+    price: 8999,
     category: null,
     description: "",
     image: "images/132.webp"
