@@ -244,25 +244,17 @@
     </div>
 
     <script>
-        // Sample cart data - in real implementation, this would come from sessionStorage or global variable
+        // Cart data - retrieved from localStorage
         let cartItems = [];
         
-        // Try to get cart from sessionStorage first
+        // Get cart from localStorage (where shopping cart stores items)
         try {
-            const sessionCart = sessionStorage.getItem('cart');
-            if (sessionCart) {
-                cartItems = JSON.parse(sessionCart);
+            const localCart = localStorage.getItem('cart');
+            if (localCart) {
+                cartItems = JSON.parse(localCart);
             }
         } catch (e) {
-            console.log('Could not read cart from sessionStorage');
-        }
-        
-        // Fallback hardcoded sample items if cart is empty
-        if (cartItems.length === 0) {
-            cartItems = [
-                { id: 1, name: 'Handwoven Basket', price: 1200, quantity: 1 },
-                { id: 2, name: 'Artisan Candle Set', price: 800, quantity: 2 }
-            ];
+            console.log('Could not read cart from localStorage');
         }
         
         function renderOrderSummary() {
@@ -333,7 +325,7 @@
         document.getElementById('whatsappButton').addEventListener('click', function() {
             const message = formatWhatsAppMessage();
             if (message) {
-                const whatsappUrl = `https://wa.me/9779864563255?text=${message}`;
+                const whatsappUrl = `https://wa.me/+9779864563255?text=${message}`;
                 window.open(whatsappUrl, '_blank');
             }
         });
