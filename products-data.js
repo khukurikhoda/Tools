@@ -5,7 +5,7 @@ const products = [
   {
     id: 1,
     name: "5 inch Khukuri",
-    price: 1099,
+    price: 1099/1,
     category: null,
     description: "",
     image: "images/55.webp"
@@ -14,7 +14,7 @@ const products = [
   {
     id: 3,
     name: "Hasiya",
-    price: 1500,
+    price: 1500/1,
     category: null,
     description: "",
     image: "images/90.webp"
