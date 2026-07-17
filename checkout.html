@@ -106,6 +106,15 @@
             font-weight: 600;
             font-size: 1.1rem;
         }
+
+        .order-item-thumb {
+            width: 55px;
+            height: 55px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+            border: 1px solid var(--border-color);
+        }
         
         .order-total {
             display: flex;
@@ -184,7 +193,7 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <a href="index.html" class="nav-logo-link">
-                    <img src="images/logo.webp" alt="Tools Nepal Logo" class="logo-image">
+                    <img src="images/logo.webp" alt="Shree Krishna Traders Logo" class="logo-image">
                     <span>Tools Nepal</span>
                 </a>
             </div>
@@ -281,6 +290,7 @@
                 
                 itemsHTML += `
                     <div class="order-item">
+                        <img class="order-item-thumb" src="${item.image || 'images/basket.webp'}" alt="${item.name}">
                         <div class="order-item-info">
                             <div class="order-item-name">${item.name}</div>
                             <div class="order-item-quantity">Quantity: ${item.quantity}</div>
@@ -304,7 +314,7 @@
                 return null;
             }
             
-            let message = `🛒 *NEW ORDER - Tools Nepal*\n\n👤 *Customer Details:*\nName: ${fullName}\nPhone: ${phoneNumber}\nAddress: ${deliveryAddress}\n\n📦 *Order Details:*\n`;
+            let message = `🛒 *NEW ORDER - Shree Krishna Traders*\n\n👤 *Customer Details:*\nName: ${fullName}\nPhone: ${phoneNumber}\nAddress: ${deliveryAddress}\n\n📦 *Order Details:*\n`;
             
             if (cartItems.length === 0) {
                 message += 'No items in cart';
