@@ -1,5 +1,7 @@
 const products = [
-  { id: 1, name: "5 inch Khukuri", slug: "5-inch-khukuri-1", price: 1099, category: null, description: "", image: "images/55.webp" },
+  { id: 96, name: "Damascus Blade Full Set Knife", slug: "damascus-blade-full-set-knife-96", price: 41000, category: "Knife", description: " premium handcrafted Damascus full tang knife with custom brass bolsters. Comes as a complete set with leather sheath, sharpening stone, and presentation case.", image: "images/knifeseT.webp", images: ["images/knifeseT.webp"], isLatest: true, specs: [{ label: "Blade Material", value: "Damascus Steel" }, { label: "Handle", value: "Premium Wood" }, { label: "Blade Length", value: "8 inch" }, { label: "Overall Length", value: "12 inch" }, { label: "Weight", value: "1.2 kg" }, { label: "Edge Type", value: "Full-tang, Hand-Sharpened" }, { label: "Includes", value: "Sheath, Sharpening Stone, Presentation Case" }] },
+  { id: 94, name: "Knife", slug: "knife-2500-94", price: 2500, category: null, description: "", image: "images/knife2500(1) (2).webp", images: ["images/knife2500(1) (2).webp", "images/knife2500.webp"], isLatest: true },
+  { id: 95, name: "Tiger Chopper", slug: "tiger-chopper-95", price: 6500, category: null, description: "", image: "images/tiger1.webp", images: ["images/tiger1.webp", "images/tiger.webp"], isLatest: true },
   { id: 3, name: "Hasiya", slug: "hasiya-3", price: 1500, category: null, description: "", image: "images/90.webp" },
   { id: 4, name: "chulesi", slug: "chulesi-4", price: 1700, category: null, description: "", image: "images/78.webp" },
   { id: 5, name: "5INCH WHITE BONE HANDLE KHUKURI", slug: "5inch-white-bone-handle-khukuri-5", price: 1799, category: null, description: "", image: "images/39.webp" },
@@ -106,6 +108,8 @@ const categories = [
   "Other Products"
 ];
 
+const latestProductSlugs = ['damascus-blade-full-set-knife-96', 'knife-2500-94', 'tiger-chopper-95'];
+
 function inferCategory(name) {
   const normalizedName = `${name || ''}`.toLowerCase();
 
@@ -150,15 +154,20 @@ products.forEach((product) => {
   const inferredCategory = inferCategory(product.name);
   product.category = product.category || inferredCategory;
   product.description = product.description || inferDescription(product.name, product.price);
-  product.image = product.image || 'images/basket.webp';
+  if (!product.image) {
+    product.image = 'images/basket.webp';
+  }
+  if (!product.images || product.images.length === 0) {
+    product.images = [product.image];
+  }
 });
 
 if (typeof window !== 'undefined') {
   window.products = products;
   window.categories = categories;
+  window.latestProductSlugs = latestProductSlugs;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { products, categories, inferCategory };
+  module.exports = { products, categories, inferCategory, latestProductSlugs };
 }
-

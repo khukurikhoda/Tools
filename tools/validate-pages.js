@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const dir = path.join(__dirname, '..', 'products');
-const files = fs.readdirSync(dir).filter((f) => f.endsWith('.html') && f !== 'product-template.html' && f !== '5-inch-khukuri-1.html');
+const files = fs.readdirSync(dir).filter((f) => f.endsWith('.html') && f !== 'product-template.html');
 const bad = [];
 for (const f of files) {
   const s = fs.readFileSync(path.join(dir, f), 'utf8');

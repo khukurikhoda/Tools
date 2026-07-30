@@ -234,6 +234,9 @@ class ProductManager {
         this.sortSelect = document.getElementById('sortSelect');
         this.priceFilterSelect = document.getElementById('priceFilter');
         this.limit = this.productsGrid?.dataset.limit ? Number(this.productsGrid.dataset.limit) : null;
+        this.pageSize = this.productsGrid?.dataset.paginate ? Number(this.productsGrid.dataset.paginate) : null;
+        this.currentPage = 1;
+        this.paginationContainer = document.getElementById('pagination');
         this.init();
     }
 
@@ -250,6 +253,7 @@ class ProductManager {
         if (this.searchInput) {
             this.searchInput.addEventListener('input', (event) => {
                 this.searchQuery = event.target.value.toLowerCase().trim();
+                this.currentPage = 1;
                 this.renderProducts();
             });
         }
@@ -258,6 +262,7 @@ class ProductManager {
             button.addEventListener('click', () => {
                 this.categoryFilter = button.dataset.category || 'All Products';
                 this.categoryButtons.forEach((btn) => btn.classList.toggle('active', btn === button));
+                this.currentPage = 1;
                 this.renderProducts();
             });
         });
@@ -265,6 +270,7 @@ class ProductManager {
         if (this.sortSelect) {
             this.sortSelect.addEventListener('change', (event) => {
                 this.sortBy = event.target.value;
+                this.currentPage = 1;
                 this.renderProducts();
             });
         }
@@ -272,6 +278,7 @@ class ProductManager {
         if (this.priceFilterSelect) {
             this.priceFilterSelect.addEventListener('change', (event) => {
                 this.priceFilter = event.target.value;
+                this.currentPage = 1;
                 this.renderProducts();
             });
         }
@@ -306,25 +313,113 @@ class ProductManager {
     sortProducts(products) {
         const sorted = products.slice();
 
-        switch (this.sortBy) {
-            case 'price-desc':
-                sorted.sort((a, b) => (Number(b.price) || 0) - (Number(a.price) || 0));
-                break;
-            case 'name-asc':
-                sorted.sort((a, b) => `${a.name}`.localeCompare(`${b.name}`));
-                break;
-            case 'price-asc':
-            default:
-                sorted.sort((a, b) => (Number(a.price) || 0) - (Number(b.price) || 0));
-                break;
-        }
+        sorted.sort((a, b) => {
+            const aLatest = a.isLatest ? 1 : 0;
+            const bLatest = b.isLatest ? 1 : 0;
+            if (aLatest !== bLatest) {
+                return bLatest - aLatest;
+            }
+
+            switch (this.sortBy) {
+                case 'price-desc':
+                    return (Number(b.price) || 0) - (Number(a.price) || 0);
+                case 'name-asc':
+                    return `${a.name}`.localeCompare(`${b.name}`);
+                case 'price-asc':
+                default:
+                    return (Number(a.price) || 0) - (Number(b.price) || 0);
+            }
+        });
 
         return sorted;
     }
 
     getProductsToShow() {
         const filteredProducts = this.sortProducts(this.filteredProducts());
+
+        if (this.pageSize) {
+            const start = (this.currentPage - 1) * this.pageSize;
+            return filteredProducts.slice(start, start + this.pageSize);
+        }
+
         return this.limit ? filteredProducts.slice(0, this.limit) : filteredProducts;
+    }
+
+    getTotalPages() {
+        if (!this.pageSize) {
+            return 1;
+        }
+        return Math.max(1, Math.ceil(this.filteredProducts().length / this.pageSize));
+    }
+
+    goToPage(page) {
+        const totalPages = this.getTotalPages();
+        this.currentPage = Math.max(1, Math.min(page, totalPages));
+        this.renderProducts();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    renderPagination() {
+        if (!this.paginationContainer || !this.pageSize) {
+            return;
+        }
+
+        const totalPages = this.getTotalPages();
+
+        if (totalPages <= 1) {
+            this.paginationContainer.innerHTML = '';
+            return;
+        }
+
+        const createButton = (label, page, isActive = false, isDisabled = false) => {
+            if (isDisabled) {
+                return `<button class="page-btn disabled" disabled>${label}</button>`;
+            }
+            return `<button class="page-btn ${isActive ? 'active' : ''}" data-page="${page}">${label}</button>`;
+        };
+
+        let html = '';
+
+        html += createButton('← Previous', this.currentPage - 1, false, this.currentPage === 1);
+
+        const maxVisible = 5;
+        let startPage = Math.max(1, this.currentPage - Math.floor(maxVisible / 2));
+        let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+
+        if (endPage - startPage + 1 < maxVisible) {
+            startPage = Math.max(1, endPage - maxVisible + 1);
+        }
+
+        if (startPage > 1) {
+            html += createButton('1', 1);
+            if (startPage > 2) {
+                html += `<span class="page-ellipsis">...</span>`;
+            }
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+            html += createButton(i, i, i === this.currentPage);
+        }
+
+        if (endPage < totalPages) {
+            if (endPage < totalPages - 1) {
+                html += `<span class="page-ellipsis">...</span>`;
+            }
+            html += createButton(totalPages, totalPages);
+        }
+
+        html += createButton('Next →', this.currentPage + 1, false, this.currentPage === totalPages);
+
+        this.paginationContainer.innerHTML = html;
+
+        this.paginationContainer.querySelectorAll('.page-btn:not(.disabled)').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const page = Number(btn.dataset.page);
+                if (!Number.isNaN(page)) {
+                    this.goToPage(page);
+                }
+            });
+        });
     }
 
     renderProducts() {
@@ -337,10 +432,12 @@ class ProductManager {
                     <p>No products match your search yet.</p>
                 </div>
             `;
+            this.renderPagination();
             return;
         }
 
         this.productsGrid.innerHTML = productsToShow.map((product) => this.createProductCard(product)).join('');
+        this.renderPagination();
     }
 
     createProductCard(product) {
@@ -785,6 +882,49 @@ function renderCategoryCards() {
         </a>`).join('');
 }
 
+function renderLatestProducts(containerId) {
+    const container = document.getElementById(containerId);
+
+    if (!container || !Array.isArray(window.latestProductSlugs) || !Array.isArray(window.products)) {
+        return;
+    }
+
+    const latestProducts = window.latestProductSlugs
+        .map((slug) => window.products.find((p) => p.slug === slug))
+        .filter(Boolean);
+
+    if (!latestProducts.length) {
+        return;
+    }
+
+    container.innerHTML = latestProducts.map((product) => {
+        const slug = product.slug || `${product.name.toLowerCase().replace(/\s+/g, '-')}`;
+        const image = product.image || 'images/basket.webp';
+        const onProductPage = Boolean(getProductSlugFromPath());
+        const href = onProductPage ? `${slug}.html` : `products/${slug}.html`;
+
+        return `
+            <a class="product-card-link" href="${href}">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="${image}" alt="${product.name}" loading="lazy" onerror="this.src='images/basket.webp'">
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <div class="product-price">NPR ${product.price.toLocaleString()}</div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-add-cart" onclick="event.preventDefault(); addToCart('${product.name.replace(/'/g, "\\'")}', ${product.price}, '${product.slug}')">
+                            <i class="fas fa-cart-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </a>
+        `;
+    }).join('');
+}
+
 function initShareBar() {
     const bar = document.querySelector('.share-bar');
 
@@ -876,6 +1016,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCategoryFromQuery();
     recordRecentlyViewed();
     renderEngagementSections();
+    renderLatestProducts('latestProductsGrid');
     initShareBar();
     initProductNav();
 

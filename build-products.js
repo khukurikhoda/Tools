@@ -4,45 +4,12 @@ const path = require('path');
 const { products, categories, inferCategory } = require('./products-data.js');
 
 const PRODUCTS_DIR = path.join(__dirname, 'products');
-const APPROVED_PAGE = path.join(PRODUCTS_DIR, '5-inch-khukuri-1.html');
+const TEMPLATE_PATH = path.join(PRODUCTS_DIR, 'product-template.html');
 const SITEMAP_PATH = path.join(__dirname, 'sitemap.xml');
 const BASE_URL = 'https://shreekrishnatraders.com.np';
-const APPROVED_SLUG = '5-inch-khukuri-1';
 
 function replaceAll(s, from, to) {
   return s.split(from).join(to);
-}
-
-function locateOpening(html, className) {
-  const re = /<([a-zA-Z0-9]+)([^>]*)class="([^"]*)"([^>]*)>/g;
-  let m;
-  while ((m = re.exec(html)) !== null) {
-    if ((m[3] || '').split(/\s+/).filter(Boolean).includes(className)) {
-      return { tag: m[1], index: m.index, end: m.index + m[0].length };
-    }
-  }
-  return null;
-}
-
-function setInnerHTML(html, className, newInner) {
-  const open = locateOpening(html, className);
-  if (!open) return html;
-  const closeTag = `</${open.tag}>`;
-  let depth = 1;
-  let i = open.end;
-  while (i < html.length) {
-    if (html.startsWith(closeTag, i)) {
-      if (depth === 1) return html.slice(0, open.end) + newInner + html.slice(i);
-      depth--;
-      i += closeTag.length;
-    } else if (html.startsWith(`<${open.tag}`, i) && html[i + 1 + open.tag.length] !== '/') {
-      depth++;
-      i++;
-    } else {
-      i++;
-    }
-  }
-  return html;
 }
 
 function stripTags(s) {
@@ -54,33 +21,10 @@ function cleanForMeta(s) {
   return t.length > 160 ? t.slice(0, 157).trim() + '...' : t;
 }
 
-// Build the tokenised template from the approved page (single source of truth).
-function buildTemplate(src) {
-  let t = src;
-  t = t.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/,
-    '<script type="application/ld+json">\n{{JSON_LD}}\n    </script>');
-  t = t.replace(/<meta name="description" content="[^"]*">/,
-    '<meta name="description" content="{{META_DESCRIPTION}}">');
-  t = t.replace(/<link rel="canonical" href="[^"]*">/,
-    '<link rel="canonical" href="{{CANONICAL}}">');
-  t = t.replace(/<meta property="og:url" content="[^"]*">/,
-    '<meta property="og:url" content="{{CANONICAL}}">');
-  t = t.replace(/href="https:\/\/wa\.me\/9779864563255\?text=[^"]*"/,
-    'href="{{WHATSAPP_URL}}"');
-  t = replaceAll(t, '5 inch Khukuri', '{{NAME}}');
-  t = setInnerHTML(t, 'product-category', '{{CATEGORY}}');
-  t = replaceAll(t, 'SKU-1', '{{SKU}}');
-  t = replaceAll(t, 'https://shreekrishnatraders.com.np/images/55.webp', '{{OG_IMAGE}}');
-  t = replaceAll(t, '../images/55.webp', '{{REL_IMAGE}}');
-  t = replaceAll(t, '1,099', '{{PRICE_FMT}}');
-  t = replaceAll(t, '1099', '{{PRICE_RAW}}');
-  t = t.replace(/(<span class="dot"><\/span>\s*)In Stock/, '$1{{STOCK}}');
-  t = setInnerHTML(t, 'product-description', '{{DESCRIPTION_HTML}}');
-  t = setInnerHTML(t, 'specs-list', '{{SPECS_HTML}}');
-  return t;
-}
-
 function extractSpecs(product) {
+  if (product.specs && product.specs.length > 0) {
+    return product.specs;
+  }
   const name = (product.name || '').toLowerCase();
   const specs = [];
   const inch = name.match(/(\d+)\s*inch/);
@@ -156,25 +100,22 @@ function buildJsonLd(name, description, absoluteImage, sku, category, priceRaw, 
 }
 
 function build() {
-  if (!fs.existsSync(APPROVED_PAGE)) {
-    console.error('Approved reference page not found:', APPROVED_PAGE);
+  if (!fs.existsSync(TEMPLATE_PATH)) {
+    console.error('Template file not found:', TEMPLATE_PATH);
     process.exit(1);
   }
-  const template = buildTemplate(fs.readFileSync(APPROVED_PAGE, 'utf8'));
+  const template = fs.readFileSync(TEMPLATE_PATH, 'utf8');
 
   if (!fs.existsSync(PRODUCTS_DIR)) fs.mkdirSync(PRODUCTS_DIR, { recursive: true });
 
-  // Preserve the approved reference page and the build template; regenerate everything else.
   const existing = fs.readdirSync(PRODUCTS_DIR).filter(
-    (f) => f.endsWith('.html') && f !== 'product-template.html' && f !== `${APPROVED_SLUG}.html`
+    (f) => f.endsWith('.html') && f !== 'product-template.html'
   );
   for (const f of existing) fs.unlinkSync(path.join(PRODUCTS_DIR, f));
 
   const generated = [];
   for (const product of products) {
     const slug = product.slug || `${product.name.toLowerCase().replace(/\s+/g, '-')}-${product.id}`;
-    if (slug === APPROVED_SLUG) continue; // keep the curated reference page untouched
-
     const fileName = `${slug}.html`;
     const pageUrl = `${BASE_URL}/products/${fileName}`;
     const name = product.name;
@@ -182,10 +123,12 @@ function build() {
     const priceFmt = priceRaw.toLocaleString('en-US');
     const category = product.category || inferCategory(name) || 'Other Products';
     const sku = `SKU-${product.id != null ? product.id : ''}`;
-    const relImage = `../${product.image || 'images/basket.webp'}`;
-    const absoluteImage = `${BASE_URL}/${(product.image || 'images/basket.webp')}`;
+    const images = (product.images && product.images.length > 0) ? product.images : [product.image || 'images/basket.webp'];
+    const relImage = `../${images[0]}`;
+    const absoluteImage = `${BASE_URL}/${images[0]}`;
+    const thumbnailsHtml = images.map((img) => `<img src="../${img}" alt="${name} - view" data-full="../${img}">`).join('');
     const descriptionHtml = `<p>${product.description || ''}</p>`;
-    const specsHtml = renderSpecsHtml(extractSpecs({ name, category }));
+    const specsHtml = renderSpecsHtml(extractSpecs(product));
     const metaDescription = `Buy the ${name} from Shree Krishna Traders. ${cleanForMeta(descriptionHtml)}. NPR ${priceFmt}. Fast delivery across Nepal.`;
     const whatsappUrl = buildWhatsAppUrl(name, priceFmt);
     const jsonLd = JSON.stringify(
@@ -195,74 +138,77 @@ function build() {
     ).split('\n').map((l) => '    ' + l).join('\n');
 
     let html = template;
-    html = replaceAll(html, '{{NAME}}', name);
-    html = replaceAll(html, '{{CATEGORY}}', category);
-    html = replaceAll(html, '{{SKU}}', sku);
-    html = replaceAll(html, '{{OG_IMAGE}}', absoluteImage);
-    html = replaceAll(html, '{{REL_IMAGE}}', relImage);
-    html = replaceAll(html, '{{PRICE_FMT}}', priceFmt);
-    html = replaceAll(html, '{{PRICE_RAW}}', String(priceRaw));
-    html = replaceAll(html, '{{STOCK}}', 'In Stock');
+    html = replaceAll(html, '{{PAGE_TITLE}}', name);
+    html = replaceAll(html, '{{OG_TITLE}}', name);
     html = replaceAll(html, '{{META_DESCRIPTION}}', metaDescription);
-    html = replaceAll(html, '{{CANONICAL}}', pageUrl);
+    html = replaceAll(html, '{{CANONICAL_URL}}', pageUrl);
+    html = replaceAll(html, '{{BREADCRUMB_NAME}}', name);
+    html = replaceAll(html, '{{PRODUCT_NAME}}', name);
+    html = replaceAll(html, '{{PRODUCT_CATEGORY}}', category);
+    html = replaceAll(html, '{{PRODUCT_PRICE}}', priceFmt);
+    html = replaceAll(html, '{{PRODUCT_PRICE_RAW}}', String(priceRaw));
+    html = replaceAll(html, '{{PRODUCT_ID}}', String(product.id != null ? product.id : ''));
+    html = replaceAll(html, '{{PRODUCT_IMAGE}}', images[0]);
+    html = replaceAll(html, '{{PRODUCT_DESCRIPTION}}', descriptionHtml);
+    html = replaceAll(html, '{{SPECS_ROWS}}', specsHtml);
     html = replaceAll(html, '{{WHATSAPP_URL}}', whatsappUrl);
-    html = replaceAll(html, '{{DESCRIPTION_HTML}}', descriptionHtml);
-    html = replaceAll(html, '{{SPECS_HTML}}', specsHtml);
+    html = replaceAll(html, '{{OG_IMAGE}}', absoluteImage);
     html = replaceAll(html, '{{JSON_LD}}', jsonLd);
+    html = replaceAll(html, '{{THUMBNAILS_HTML}}', thumbnailsHtml);
+    html = replaceAll(html, '{{RELATED_PRODUCTS_HTML}}', '');
 
     fs.writeFileSync(path.join(PRODUCTS_DIR, fileName), html, 'utf8');
     generated.push({ id: product.id, name, file: fileName, url: pageUrl });
   }
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
- <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-   <url>
-     <loc>${BASE_URL}/</loc>
-     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-     <changefreq>weekly</changefreq>
-     <priority>1.0</priority>
-   </url>
-   <url>
-     <loc>${BASE_URL}/products.html</loc>
-     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-     <changefreq>weekly</changefreq>
-     <priority>0.9</priority>
-   </url>
-   <url>
-     <loc>${BASE_URL}/checkout.html</loc>
-     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-     <changefreq>weekly</changefreq>
-     <priority>0.5</priority>
-   </url>
-   <url>
-     <loc>${BASE_URL}/login.html</loc>
-     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-     <changefreq>weekly</changefreq>
-     <priority>0.5</priority>
-   </url>
-   <url>
-     <loc>${BASE_URL}/track.html</loc>
-     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-     <changefreq>weekly</changefreq>
-     <priority>0.6</priority>
-   </url>
-   ${generated
-     .map(
-       (p) => `  <url>
-     <loc>${p.url}</loc>
-     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-     <changefreq>weekly</changefreq>
-     <priority>0.8</priority>
-   </url>`
-     )
-     .join('\n')}
- </urlset>
- `;
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>${BASE_URL}/</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/products.html</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/checkout.html</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/login.html</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/track.html</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  ${generated
+    .map(
+      (p) => `  <url>
+    <loc>${p.url}</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`
+    )
+    .join('\n')}
+</urlset>
+`;
 
   fs.writeFileSync(SITEMAP_PATH, sitemap, 'utf8');
 
-  console.log(`Generated ${generated.length} product pages from the approved template.`);
-  console.log(`Approved reference (${APPROVED_SLUG}.html) preserved.`);
+  console.log(`Generated ${generated.length} product pages from product-template.html.`);
   console.log(`Updated sitemap.xml with ${generated.length + 5} URLs.`);
 }
 

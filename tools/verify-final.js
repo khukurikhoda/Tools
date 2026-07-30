@@ -5,10 +5,6 @@ const ph = fs.readdirSync(pdir).filter((f) => f.endsWith('.html'));
 let tn = ph.filter((f) => /Tools Nepal/.test(fs.readFileSync(path.join(pdir, f), 'utf8')));
 console.log('Product pages still containing Tools Nepal:', tn.length ? tn : 'none');
 
-const app = fs.readFileSync(path.join(pdir, '5-inch-khukuri-1.html'), 'utf8');
-console.log('Approved page intact (curated desc + Full-tang Khukuri):',
-  app.includes('Full-tang Khukuri') && app.includes('compact, full-tang blade hand-forged'));
-
 let missingMain = [];
 for (const f of ph) {
   if (f === 'product-template.html') continue;

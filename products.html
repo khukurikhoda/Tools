@@ -89,9 +89,20 @@
                 </div>
             </div>
 
-            <div class="products-grid" id="productsGrid">
+            <div class="latest-products-section" id="latestProductsSection">
+                <h2 class="latest-heading">Latest Products <span class="pp-pill">New arrivals</span></h2>
+                <div class="products-grid" id="latestProductsGrid">
+                    <!-- Latest products loaded here -->
+                </div>
+            </div>
+
+            <div class="products-grid" id="productsGrid" data-paginate="15">
                 <!-- Products will be dynamically loaded here -->
             </div>
+
+            <nav class="pagination" id="pagination" aria-label="Product pagination">
+                <!-- Pagination controls rendered by JS -->
+            </nav>
         </div>
     </section>
 
