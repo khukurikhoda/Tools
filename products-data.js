@@ -1895,24 +1895,293 @@ const products = [
     ]
   },
 {
-    "id": 91,
-    "name": "Full Wall Set talbar 32 inch length",
-    "slug": "full-wall-set-talbar-32-inch-length-91",
-    "price": 46000,
+    "id": 102,
+    "name": "Handcrafted Knife 7 inch",
+    "slug": "handcrafted-knife-7-inch-102",
+    "price": 2999,
     "category": "Other Products",
     "description": "",
-    "image": "images/82.webp",
-    "sku": "SKU-91",
+    "image": "images/120.webp",
+    "sku": "SKU-102",
     "images": [
-      "images/82.webp"
+      "images/120.webp"
     ],
     "specs": [
       {
         "label": "Blade Length",
-        "value": "32 inch"
+        "value": "7 inch"
       }
     ]
-  }
+  },
+  {
+    "id": 97,
+    "name": "Handcrafted Knife 8 inch",
+    "slug": "handcrafted-knife-8-inch-97",
+    "price": 3499,
+    "category": "Other Products",
+    "description": "",
+    "image": "images/102.webp",
+    "sku": "SKU-97",
+    "images": [
+      "images/102.webp"
+    ],
+    "specs": [
+      {
+        "label": "Blade Length",
+        "value": "8 inch"
+      }
+    ]
+  },
+  {
+    "id": 98,
+    "name": "Handcrafted Knife 9 inch",
+    "slug": "handcrafted-knife-9-inch-98",
+    "price": 3999,
+    "category": "Other Products",
+    "description": "",
+    "image": "images/103.webp",
+    "sku": "SKU-98",
+    "images": [
+      "images/103.webp"
+    ],
+    "specs": [
+      {
+        "label": "Blade Length",
+        "value": "9 inch"
+      }
+    ]
+  },
+  {
+    "id": 99,
+    "name": "Handcrafted Khukuri 6 inch",
+    "slug": "handcrafted-khukuri-6-inch-99",
+    "price": 2499,
+    "category": "Khukuri",
+    "description": "",
+    "image": "images/110.webp",
+    "sku": "SKU-99",
+    "images": [
+      "images/110.webp"
+    ],
+    "specs": [
+      {
+        "label": "Blade Length",
+        "value": "6 inch"
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "name": "Handcrafted Khukuri 10 inch",
+    "slug": "handcrafted-khukuri-10-inch-100",
+    "price": 4499,
+    "category": "Khukuri",
+    "description": "",
+    "image": "images/111.webp",
+    "sku": "SKU-100",
+    "images": [
+      "images/111.webp"
+    ],
+    "specs": [
+      {
+        "label": "Blade Length",
+        "value": "10 inch"
+      }
+    ]
+  },
+  {
+    "id": 101,
+    "name": "Handcrafted Knife 10 inch",
+    "slug": "handcrafted-knife-10-inch-101",
+    "price": 4999,
+    "category": "Other Products",
+    "description": "",
+    "image": "images/119.webp",
+    "sku": "SKU-101",
+    "images": [
+      "images/119.webp"
+    ],
+    "specs": [
+      {
+        "label": "Blade Length",
+        "value": "10 inch"
+      }
+    ]
+  },
+  {
+    "id": 103,
+    "name": "Japanese Knife",
+    "slug": "japanese-knife-103",
+    "price": 27000,
+    "category": "Knife",
+    "description": "",
+    "image": "products/images/set1.webp",
+    "images": [
+      "products/images/set1.webp"
+    ],
+    "isLatest": true,
+    "sku": "SKU-103",
+    "specs": [
+      {
+        "label": "Blade",
+        "value": "67 layers Damascus Steel"
+      },
+      {
+        "label": "Handle",
+        "value": "G10"
+      },
+      {
+        "label": "Hardness",
+        "value": "60 ± 2 HRC"
+      },
+      {
+        "label": "Thickness",
+        "value": "2.5 mm"
+      }
+    ]
+  },
+  {
+    "id": 104,
+    "name": "Pakka Wood Handle Knife",
+    "slug": "pakka-wood-handle-knife-104",
+    "price": 23000,
+    "category": "Knife",
+    "description": "",
+    "image": "products/images/set2.webp",
+    "images": [
+      "products/images/set2.webp"
+    ],
+    "isLatest": true,
+    "sku": "SKU-104",
+    "specs": [
+      {
+        "label": "Blade",
+        "value": "5Cr15 Stainless Steel"
+      },
+      {
+        "label": "Handle",
+        "value": "Pakka Wood"
+      },
+      {
+        "label": "Rockwell",
+        "value": "57 ± 2 HRC"
+      },
+      {
+        "label": "Edge sharpened angle",
+        "value": "12–15° per side"
+      }
+    ]
+  },
+  {
+    "id": 105,
+    "name": "Pakkawood 5Cr15 MoV Knife",
+    "slug": "pakkawood-5cr15-mov-knife-105",
+    "price": 36500,
+    "category": "Knife",
+    "description": "",
+    "image": "products/images/set5.webp",
+    "images": [
+      "products/images/set5.webp"
+    ],
+    "isLatest": true,
+    "sku": "SKU-105",
+    "specs": [
+      {
+        "label": "Blade",
+        "value": "5Cr15 MoV Stainless Steel"
+      },
+      {
+        "label": "Handle",
+        "value": "Pakkawood"
+      },
+      {
+        "label": "Rockwell",
+        "value": "57 ± 2 HRC"
+      },
+      {
+        "label": "Edge sharpened angle",
+        "value": "9–12° per side"
+      }
+    ]
+  },
+  {
+    "id": 106,
+    "name": "Kitchen Knife Set",
+    "slug": "kitchen-knife-set-106",
+    "price": 19500,
+    "category": "Kitchen Knives",
+    "description": "",
+    "image": "products/images/set7.webp",
+    "images": [
+      "products/images/set7.webp"
+    ],
+    "isLatest": true,
+    "sku": "SKU-106"
+  },
+  {
+    "id": 107,
+    "name": "Pakka Wood Handle Set",
+    "slug": "pakka-wood-handle-set-107",
+    "price": 39000,
+    "category": "Knife",
+    "description": "",
+    "image": "products/images/set8.webp",
+    "images": [
+      "products/images/set8.webp"
+    ],
+    "isLatest": true,
+    "sku": "SKU-107",
+    "specs": [
+      {
+        "label": "Blade",
+        "value": "5Cr15 Stainless Steel"
+      },
+      {
+        "label": "Handle",
+        "value": "Pakka Wood"
+      },
+      {
+        "label": "Rockwell",
+        "value": "57 ± 2 HRC"
+      },
+      {
+        "label": "Edge sharpened angle",
+        "value": "12–15° per side"
+      }
+    ]
+  },
+  {
+    "id": 108,
+    "name": "Octagonal Ebony Handle Knife",
+    "slug": "octagonal-ebony-handle-knife-108",
+    "price": 37500,
+    "category": "Knife",
+    "description": "",
+    "image": "products/images/set9.webp",
+    "images": [
+      "products/images/set9.webp"
+    ],
+    "isLatest": true,
+    "sku": "SKU-108",
+    "specs": [
+      {
+        "label": "Blade",
+        "value": "5Cr15 MoV Stainless Steel"
+      },
+      {
+        "label": "Handle",
+        "value": "Octagonal Ebony Wood"
+      },
+      {
+        "label": "Rockwell",
+        "value": "57 ± 2 HRC"
+      },
+      {
+        "label": "Edge sharpened angle",
+        "value": "12–15° per side"
+      }
+    ]
+  },
 ];
 
 // Categories for filtering
@@ -1928,7 +2197,17 @@ const categories = [
   "Other Products"
 ];
 
-const latestProductSlugs = ['damascus-blade-full-set-knife-96', 'knife-2500-94', 'tiger-chopper-95'];
+const latestProductSlugs = [
+  'japanese-knife-103',
+  'pakka-wood-handle-knife-104',
+  'pakkawood-5cr15-mov-knife-105',
+  'kitchen-knife-set-106',
+  'pakka-wood-handle-set-107',
+  'octagonal-ebony-handle-knife-108',
+  'damascus-blade-full-set-knife-96',
+  'knife-2500-94',
+  'tiger-chopper-95'
+];
 
 function inferCategory(name) {
   const normalizedName = `${name || ""}`.toLowerCase();
