@@ -149,7 +149,7 @@ const products = [
 {
     "id": 5,
     "name": "5INCH WHITE BONE HANDLE KHUKURI",
-    "slug": "5inch-white-bone-handle-khukuri-5",
+    "slug": "5-inch-white-bone-handle-khukuri-5",
     "price": 1799,
     "category": "Khukuri",
     "description": "",
@@ -426,8 +426,8 @@ const products = [
   },
 {
     "id": 18,
-    "name": "JAPANEESE DAU",
-    "slug": "japaneese-dau-18",
+    "name": "JAPANESE DAU",
+    "slug": "japanese-dau-18",
     "price": 3000,
     "category": "Other Products",
     "description": "",
@@ -776,8 +776,8 @@ const products = [
   },
 {
     "id": 40,
-    "name": "10inch SAFTEY KNIFE LEATHER COLOUR",
-    "slug": "10inch-saftey-knife-leather-colour-40",
+    "name": "10 inch SAFETY KNIFE LEATHER COLOUR",
+    "slug": "10-inch-safety-knife-leather-colour-40",
     "price": 5499,
     "category": "Other Products",
     "description": "",
@@ -799,8 +799,8 @@ const products = [
   },
 {
     "id": 41,
-    "name": "5inch BLADE,BONE HANDLE AND HIDING KHUKURI",
-    "slug": "5inch-bladebone-handle-and-hiding-khukuri-41",
+    "name": "5 inch BLADE, BONE HANDLE AND HIDING KHUKURI",
+    "slug": "5-inch-blade-bone-handle-and-hiding-khukuri-41",
     "price": 4999,
     "category": "Khukuri",
     "description": "",
@@ -1035,8 +1035,8 @@ const products = [
   },
 {
     "id": 53,
-    "name": "8 inch Rambo knife orginal leather cover",
-    "slug": "8-inch-rambo-knife-orginal-leather-cover-53",
+    "name": "8 inch Rambo knife original leather cover",
+    "slug": "8-inch-rambo-knife-original-leather-cover-53",
     "price": 4999,
     "category": "Other Products",
     "description": "",
@@ -1115,8 +1115,8 @@ const products = [
   },
 {
     "id": 58,
-    "name": "GREEN LEAFS KHUKURI 10inch",
-    "slug": "green-leafs-khukuri-10inch-58",
+    "name": "GREEN LEAVES KHUKURI 10 inch",
+    "slug": "green-leaves-khukuri-10-inch-58",
     "price": 5999,
     "category": "Khukuri",
     "description": "",
@@ -1134,8 +1134,8 @@ const products = [
   },
 {
     "id": 58,
-    "name": "GREEN LEAFS KHUKURI 10inch Black Cover",
-    "slug": "green-leafs-khukuri-10inch-black-cover-58",
+    "name": "GREEN LEAVES KHUKURI 10 inch Black Cover",
+    "slug": "green-leaves-khukuri-10-inch-black-cover-58",
     "price": 5999,
     "category": "Khukuri",
     "description": "",
@@ -1173,7 +1173,7 @@ const products = [
 {
     "id": 60,
     "name": "13 inch Blade 5 inch Handle Full Brash and Genuine Leather Cover",
-    "slug": "13-inch-blade-5-inch-handle-full-brash-ane-cover-geniune-leather-60",
+    "slug": "13-inch-blade-5-inch-handle-full-brash-and-genuine-leather-60",
     "price": 6499,
     "category": "Stands",
     "description": "",
@@ -1298,8 +1298,8 @@ const products = [
   },
 {
     "id": 66,
-    "name": "Dragon eagel10 inch ganga wall",
-    "slug": "dragon-eagel10-inch-ganga-wall-66",
+    "name": "Dragon Eagle 10 inch Ganga Wall",
+    "slug": "dragon-eagle-10-inch-ganga-wall-66",
     "price": 6500,
     "category": "Other Products",
     "description": "",
@@ -1545,7 +1545,7 @@ const products = [
   },
 {
     "id": 73,
-    "name": "18 inch Green Leafs Khukuri",
+    "name": "18 inch Green Leaves Khukuri",
     "slug": "samuraikatana-18-inch-73-1",
     "price": 11000,
     "category": "Khukuri",
@@ -1640,8 +1640,8 @@ const products = [
   },
 {
     "id": 79,
-    "name": "Khoda with lether cover 22 inch",
-    "slug": "khoda-with-lether-cover-22-inch-79",
+    "name": "Khoda with leather cover 22 inch",
+    "slug": "khoda-with-leather-cover-22-inch-79",
     "price": 13000,
     "category": "Khoda",
     "description": "",
@@ -1819,8 +1819,8 @@ const products = [
   },
 {
     "id": 88,
-    "name": "24 inch blade glas Handel",
-    "slug": "24-inch-blade-glas-handel-88",
+    "name": "24 inch blade glass Handle",
+    "slug": "24-inch-blade-glass-handle-88",
     "price": 23000,
     "category": "Other Products",
     "description": "",
@@ -1896,39 +1896,36 @@ const products = [
   },
 {
     "id": 102,
-    "name": "Handcrafted Knife 7 inch",
+    "name": "Tarbal /1",
     "slug": "handcrafted-knife-7-inch-102",
-    "price": 2999,
+    "price": 19000,
     "category": "Other Products",
     "description": "",
-    "image": "images/120.webp",
+    "image": "products/images/99.webp",
     "sku": "SKU-102",
     "images": [
-      "images/120.webp"
+      "products/images/99.webp"
     ],
     "specs": [
-      {
-        "label": "Blade Length",
-        "value": "7 inch"
-      }
+      
     ]
   },
   {
     "id": 97,
-    "name": "Handcrafted Knife 8 inch",
+    "name": "18 inch Green Leafs",
     "slug": "handcrafted-knife-8-inch-97",
-    "price": 3499,
+    "price": 11000,
     "category": "Other Products",
     "description": "",
-    "image": "images/102.webp",
+    "image": "images/123.webp",
     "sku": "SKU-97",
     "images": [
-      "images/102.webp"
+      "images/123.webp"
     ],
     "specs": [
       {
         "label": "Blade Length",
-        "value": "8 inch"
+        "value": "18 inch"
       }
     ]
   },
